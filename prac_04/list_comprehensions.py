@@ -29,16 +29,32 @@ print(a_names)
 # 'Ada Alan Angel Bob Jimi'
 print(" ".join(sorted(names)))
 
-# TODO: list comprehension to create a list of all the full_names in lowercase format
-# lowercase_full_names =
+# create a list of all the full_names in lowercase format
+lower_case_full_names =[]
+for full_name in full_names:
+    lower_case_full_names.append(full_name.lower())
+print(lower_case_full_names)
 
 almost_numbers = ['0', '10', '21', '3', '-7', '88', '9']
-# TODO: list comprehension to create a list of integers from the above list of strings
-# numbers =
+# create a list of integers from the above list of strings
+numbers = []
+for number in almost_numbers:
+    numbers.append(int(number))
+print(f"{almost_numbers}\n{numbers}")
 
-# TODO: list comprehension to create a list of only the numbers that are
-# greater than 9 from the numbers (not strings) you just created
+# create a list of only the numbers that are greater than 9 from numbers
+for number in numbers:
+    if number > 9:
+        print(number, end=" ")
+print()
 
 # TODO: (more advanced) use a list comprehension and the join string method
 # to create a string (not list) of the last names for those full names longer than 11 characters
 # the result should be: 'Harlem, Hendrix, Lovelace'
+last_names_list = []
+for full_name in full_names:
+    if len(full_name) > 11:
+        split_name = full_name.split(" ")
+        last_names_list.append(split_name[1])
+last_names = ", ".join(last_names_list)
+print(last_names)
