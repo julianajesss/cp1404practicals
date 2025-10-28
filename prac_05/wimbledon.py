@@ -6,13 +6,13 @@ Actual:   43 minutes
 
 
 def main():
-    """Get wimbledon winners from file and print winners of wimbledon"""
+    """Get wimbledon winners from file and print winners of wimbledon."""
     winners_to_wins, countries = format_winners()
     print_winners(countries, winners_to_wins)
 
 
 def print_winners(countries, winners_to_wins):
-    """Print winners or wimbledon"""
+    """Print winners or wimbledon."""
     print("Wimbledon Champions:")
     for winner in winners_to_wins:
         print(f"{winner} {winners_to_wins[winner]}")
@@ -22,7 +22,7 @@ def print_winners(countries, winners_to_wins):
 
 
 def format_winners():
-    """Format winners of wimbledon"""
+    """Format winners of wimbledon."""
     winners_to_wins = {}
     countries = []
     with open("wimbledon.csv", "r", encoding="utf-8-sig") as in_file:
