@@ -49,8 +49,13 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-def load_projects(DEFAULT_FILE):
-    pass
+def load_projects(in_file):
+    f = open(in_file, "r")
+    f.readline()
+    for line in f:
+
+    f.close()
+
 
 
 def save_projects():
