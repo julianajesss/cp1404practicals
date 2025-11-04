@@ -12,8 +12,27 @@ def main():
     in_file.close()
     guitars.sort()
 
+    guitars = add_guitars(guitars)
+
     for guitar in guitars:
         print(guitar)
+
+
+def add_guitars(guitars):
+    """Add guitar to collection."""
+    guitars_count = -1
+    for guitar in guitars:
+        guitars_count += 1
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitars.append(Guitar(name, year, cost))
+        guitars_count += 1
+        print(f"{guitars[guitars_count]} added.")
+        name = input("Name: ")
+    guitars.sort()
+    return guitars
 
 
 main()
