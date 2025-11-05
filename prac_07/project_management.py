@@ -2,6 +2,9 @@
 Estimate: 30mins
 Actual: start 14.53
 """
+from prac_07.project import Project
+import datetime
+
 MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n- (A)dd new "
         "project\n- (U)pdate project\n- (Q)uit")
 DEFAULT_FILE = "projects.txt"
@@ -17,7 +20,8 @@ def main():
     and update projects."""
 
     print("Welcome to Pythonic Project Management")
-    projects = load_projects(DEFAULT_FILE)
+    projects = []
+    projects = load_projects(DEFAULT_FILE, projects)
     start_length = len(projects)
     print(f"Loaded {start_length} projects from {DEFAULT_FILE}")
 
@@ -26,7 +30,7 @@ def main():
     while choice != "Q":
         if choice == "L":
             in_file = input("File to load from: ")
-            projects.appened(load_projects(in_file))
+            projects.append(load_projects(in_file, projects))
             print(f"Loaded {len(projects) - start_length} projects from {in_file}")
             start_length = len(projects)
         elif choice == "S":
@@ -49,13 +53,17 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-def load_projects(in_file):
+def load_projects(in_file, projects):
+    """Load projects from in_file and append them to projects."""
+    projects = projects
     f = open(in_file, "r")
     f.readline()
     for line in f:
-
+        parts = line.strip().split("\t")
+        date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
+        projects.append(Project(parts[0], date, int(parts[2]), float(parts[3]), int(parts[4])))
     f.close()
-
+    return projects
 
 
 def save_projects():
