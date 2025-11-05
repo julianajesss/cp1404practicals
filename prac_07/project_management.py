@@ -34,15 +34,15 @@ def main():
             print(f"Loaded {len(projects) - start_length} projects from {in_file}")
             start_length = len(projects)
         elif choice == "S":
-            save_projects()
+            save_projects(projects)
         elif choice == "D":
-            display_projects()
+            display_projects(projects)
         elif choice == "F":
-            filter_projects()
+            filter_projects(projects)
         elif choice == "A":
-            add_project()
+            add_project(projects)
         elif choice == "U":
-            update_project()
+            update_project(projects)
         else:
             print("Invalid menu choice")
         print(MENU)
@@ -63,26 +63,41 @@ def load_projects(in_file, projects):
         date = datetime.datetime.strptime(parts[1], "%d/%m/%Y").date()
         projects.append(Project(parts[0], date, int(parts[2]), float(parts[3]), int(parts[4])))
     f.close()
+    projects.sort()
     return projects
 
 
-def save_projects():
+def save_projects(projects):
     pass
 
 
-def display_projects():
+def display_projects(projects):
+    not_completed_projects = []
+    completed_projects = []
+    for project in projects:
+        if project.completion == 100:
+            completed_projects.append(project)
+        else:
+            not_completed_projects.append(project)
+    if not_completed_projects:
+        print("Incomplete projects: ")
+        for not_completed_project in not_completed_projects:
+            print(not_completed_project)
+    if completed_projects:
+        print("Completed projects:")
+        for completed_project in completed_projects:
+            print(completed_project)
+
+
+def filter_projects(projects):
     pass
 
 
-def filter_projects():
+def add_project(projects):
     pass
 
 
-def add_project():
-    pass
-
-
-def update_project():
+def update_project(projects):
     pass
 
 
