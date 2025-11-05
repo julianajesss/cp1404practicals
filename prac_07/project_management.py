@@ -98,22 +98,28 @@ def add_project(projects):
 
 
 def update_project(projects):
+    """Update the percentage and or completion of a project in projects from user input."""
     project_count = 0
     for project in projects:
         project_count += 1
         print(project)
     possible_indexes = project_count - 1
-    project_choice = int(input("Project choice: "))
+    project_choice = int(input("Project choice: ")) - 1
     if project_choice > possible_indexes:
         print("Not a valid index")
-        return
+        return projects
     print(projects[project_choice])
-    new_percentage = int(input("New Percentage: "))
-    new_priority = int(input("New Priority: "))
-    if new_percentage:
+    try:
+        new_percentage = int(input("New Percentage: "))
         projects[project_choice].completion = new_percentage
-    if new_priority:
+    except ValueError:
+        pass
+    try:
+        new_priority = int(input("New Priority: "))
         projects[project_choice].priority = new_priority
+    except ValueError:
+        pass
+    projects.sort()
     return projects
 
 
