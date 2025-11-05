@@ -1,6 +1,6 @@
 """
 Estimate: 30mins
-Actual: start 14.53
+Actual: 1hr
 """
 from prac_07.project import Project
 import datetime
@@ -34,7 +34,8 @@ def main():
             print(f"Loaded {len(projects) - start_length} projects from {in_file}")
             start_length = len(projects)
         elif choice == "S":
-            save_projects(projects)
+            out_file = input("Filename to save projects to: ")
+            save_projects(projects, out_file)
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -47,9 +48,9 @@ def main():
             print("Invalid menu choice")
         print(MENU)
         choice = input(">>> ").upper()
-    will_you_save = input("Would you like to save to projects.txt? ").upper()
+    will_you_save = input(f"Would you like to save to {DEFAULT_FILE}? ").upper()
     if will_you_save == "YES":
-        save_projects(projects)
+        save_projects(projects, DEFAULT_FILE)
     print("Thank you for using custom-built project management software.")
 
 
@@ -67,11 +68,18 @@ def load_projects(in_file, projects):
     return projects
 
 
-def save_projects(projects):
-    pass
+def save_projects(projects, out_file):
+    """Save projects to out_file."""
+    f = open(out_file, "w")
+    print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=f)
+    for project in projects:
+        print(
+            f"{project.name}\t{project.start_date}\t{project.priority}\t{project.cost_estimate}\t{project.completion}")
+    f.close()
 
 
 def display_projects(projects):
+    """Display projects from projects sorted by priority in categories completed and incomplete."""
     not_completed_projects = []
     completed_projects = []
     for project in projects:
