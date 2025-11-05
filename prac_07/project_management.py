@@ -40,9 +40,9 @@ def main():
         elif choice == "F":
             filter_projects(projects)
         elif choice == "A":
-            add_project(projects)
+            projects = add_project(projects)
         elif choice == "U":
-            update_project(projects)
+            projects = update_project(projects)
         else:
             print("Invalid menu choice")
         print(MENU)
@@ -98,7 +98,24 @@ def add_project(projects):
 
 
 def update_project(projects):
-    pass
+    project_count = 0
+    for project in projects:
+        project_count += 1
+        print(project)
+    possible_indexes = project_count - 1
+    project_choice = int(input("Project choice: "))
+    if project_choice > possible_indexes:
+        print("Not a valid index")
+        return
+    print(projects[project_choice])
+    new_percentage = int(input("New Percentage: "))
+    new_priority = int(input("New Priority: "))
+    if new_percentage:
+        projects[project_choice].completion = new_percentage
+    if new_priority:
+        projects[project_choice].priority = new_priority
+    return projects
+
 
 
 main()
