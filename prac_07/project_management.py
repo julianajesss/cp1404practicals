@@ -90,7 +90,16 @@ def display_projects(projects):
 
 
 def filter_projects(projects):
-    pass
+    """Display projects from projects that are after a user inputted date."""
+    date_string = input("Show projects that start after date (dd/mm/yy): ")
+    date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+    projects_after_date = []
+    for project in projects:
+        if project.start_date >= date:
+            projects_after_date.append(project)
+    if projects_after_date:
+        for project_after_date in projects_after_date:
+            print(project_after_date)
 
 
 def add_project(projects):
@@ -115,7 +124,7 @@ def update_project(projects):
     project_count = 0
     for project in projects:
         project_count += 1
-        print(project)
+        print(f"{project_count} {project}")
     possible_indexes = project_count - 1
     project_choice = int(input("Project choice: ")) - 1
     if project_choice > possible_indexes:
