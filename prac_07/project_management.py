@@ -94,7 +94,20 @@ def filter_projects(projects):
 
 
 def add_project(projects):
-    pass
+    """Add a new project to list projects."""
+    print("Let's add a new project")
+    try:
+        name = input("Name: ")
+        date_string = input("Start date (dd/mm/yy): ")
+        date = datetime.datetime.strptime(date_string, "%d/%m/%Y").date()
+        priority = int(input("Priority: "))
+        cost = float(input("Cost estimate: "))
+        completion = int(input("Percent complete: "))
+        projects.append(Project(name, date, priority, cost, completion))
+    except ValueError:
+        print("Invalid input.")
+    projects.sort()
+    return projects
 
 
 def update_project(projects):
@@ -121,7 +134,6 @@ def update_project(projects):
         pass
     projects.sort()
     return projects
-
 
 
 main()
