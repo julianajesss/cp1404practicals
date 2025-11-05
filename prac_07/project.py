@@ -17,3 +17,7 @@ class Project:
     def __str__(self):
         """Return a string of project information."""
         return f"{self.name}, start: {self.start_date}, priority {self.priority}, estimate: {self.cost_estimate}, completetion: {self.completion}%"
+
+    def __lt__(self, other):
+        """Return boolean for less than other object."""
+        return self.priority < other.priority
