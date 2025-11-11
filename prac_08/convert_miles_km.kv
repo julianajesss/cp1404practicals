@@ -10,16 +10,13 @@ BoxLayout:
             Button:
                 id: up_button
                 text: 'Up'
-#                on_press: handle_up()
             Button:
                 id: down_button
                 text: 'Down'
-#                on_press: handle_down()
     Button:
-        id: handle_convert()
         text: 'Convert miles to km'
-#        on_press: handle_convert()
+        on_press: app.handle_convert()
     Label:
         id: output_field
-        text: ''
+        text: app.message
         color: (1, 1, 0, 1)
