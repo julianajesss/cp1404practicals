@@ -1,0 +1,25 @@
+BoxLayout:
+    orientation: 'vertical'
+    BoxLayout:
+        orientation: 'horizontal'
+        TextInput:
+            id: input_field
+            text: '34'
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                id: up_button
+                text: 'Up'
+#                on_press: handle_up()
+            Button:
+                id: down_button
+                text: 'Down'
+#                on_press: handle_down()
+    Button:
+        id: handle_convert()
+        text: 'Convert miles to km'
+#        on_press: handle_convert()
+    Label:
+        id: output_field
+        text: ''
+        color: (1, 1, 0, 1)
