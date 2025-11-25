@@ -9,7 +9,7 @@ class DynamicLabelsApp(App):
     def __init__(self, **kwargs):
         """Construct the main app."""
         super().__init__(**kwargs)
-        self.names = ("name 1", "name 2", "name 3", "name 4")
+        self.names = ["name 1", "name 2", "name 3", "name 4"]
 
     def build(self):
         """Build Kivy GUI."""
